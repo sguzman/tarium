@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Assemble a minimal static GitHub Pages artifact using only approved source files."""
 
+import hashlib
 import json
 import shutil
 from pathlib import Path
@@ -20,6 +21,16 @@ def build():
     OUTPUT.mkdir()
     for name in FILES:
         shutil.copyfile(SOURCE / name, OUTPUT / name)
+    # Version assets by their contents so a fresh page never loads stale CSS or JS
+    # from an earlier GitHub Pages deployment.
+    html = (OUTPUT / "index.html").read_text(encoding="utf-8")
+    for name in ("styles.css", "app.js", "theme.js"):
+        digest = hashlib.sha256((SOURCE / name).read_bytes()).hexdigest()[:12]
+        old = f'./{name}"'
+        if html.count(old) != 1:
+            raise ValueError(f"Expected exactly one asset reference for {name}")
+        html = html.replace(old, f'./{name}?v={digest}"')
+    (OUTPUT / "index.html").write_text(html, encoding="utf-8")
     (OUTPUT / "data").mkdir()
     (OUTPUT / "data" / "projects.json").write_text(
         json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8"

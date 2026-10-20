@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """No-network tests for the deployable registry-driven landing page."""
 
+import hashlib
 import json
 import re
 import sys
@@ -41,6 +42,9 @@ class SiteTests(unittest.TestCase):
         self.assertIn('<option value="light">Light</option>', html)
         self.assertIn('<option value="dark">Dark</option>', html)
         self.assertLess(html.index('./theme.js'), html.index('./styles.css'))
+        for name in ("theme.js", "app.js", "styles.css"):
+            digest = hashlib.sha256((ROOT / "site" / name).read_bytes()).hexdigest()[:12]
+            self.assertIn(f'./{name}?v={digest}"', html)
         self.assertIn('aria-label="Orbiting links to Tarium projects"', html)
 
     def test_catalog_is_not_hardcoded_in_site(self):

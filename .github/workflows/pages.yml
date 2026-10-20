@@ -33,6 +33,17 @@ jobs:
           node --check site/app.js
           node --check site/theme.js
           node --test scripts/test_orbit.mjs scripts/test_theme.mjs
+      - name: Verify actual browser appearance and automatic theme changes
+        run: |
+          npm install --no-save --package-lock=false playwright-core@1.56.1
+          python3 -m http.server 8766 --directory _site >/tmp/tarium-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          for attempt in $(seq 1 30); do
+            if curl --silent --fail http://127.0.0.1:8766/ >/dev/null; then break; fi
+            sleep 0.2
+          done
+          node scripts/browser_theme.mjs
       - name: Configure Pages
         if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
