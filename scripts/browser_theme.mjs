@@ -31,10 +31,10 @@ try {
   const regions=[".collection-section",".principles-section",".site-footer",".project-card"];
   const visualState=async()=>page.evaluate(selectors=>{
     const colors={};
-    const rgb=css=>css.match(/\\d+(?:\\.\\d+)?/g)?.slice(0,3).map(Number)||[];
+    const rgb=css=>css.match(/[0-9]+(?:[.][0-9]+)?/g)?.slice(0,3).map(Number)||[];
     for(const selector of selectors){
       const el=document.querySelector(selector);
-      assert_unused: if(!el)break assert_unused;
+      if(!el)throw new Error("Missing visual region: "+selector);
       const style=getComputedStyle(el);
       const color=rgb(style.backgroundColor);
       colors[selector]=color;
