@@ -4,6 +4,8 @@
 
 ## Article I — Scope
 
+**Naming is normative:** Taria means the private ecosystem and its private projects; Tarium means this public ecosystem and its explicitly enrolled public member projects. These labels must not be used interchangeably or treated as visibility modes of one project. No Taria project is a Tarium member by implication, and no private Taria resource may be linked or exposed by a Tarium member.
+
 Tarium is a public-facing index, governance charter, and template repository. Its purpose is to describe and coordinate eligible independent public projects. It must not serve as a monorepo, shadow copy, data warehouse, private archive, or default incubation location.
 
 Each member project has a separate repository. Incubation inside this hub is disallowed unless the owner explicitly amends this constitution.

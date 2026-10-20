@@ -4,6 +4,10 @@
 
 Tarium describes a collection of public, self-contained projects. Each project lives in its **own repository**. This repository holds the public catalog, shared rules, and reusable templates. It does not host project implementations, datasets, research inventories, galleries, or incubating projects.
 
+## Names and separation
+
+**Taria** designates the private ecosystem and its private projects. **Tarium** designates this public ecosystem and its public member projects. They are separate, and a Taria project is not a Tarium project unless a deliberately externalized public repository has been separately authorized for enrollment. Private Taria information and dependencies must never be exposed through Tarium.
+
 ## Project registry
 
 **No projects are enrolled yet.** Registration is by explicit authorization from the repository owner only. A public repository does not become a Tarium project just because it has a related name, subject, or maintainer.

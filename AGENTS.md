@@ -2,6 +2,10 @@
 
 Applies to every contributor, coding agent, documentation assistant, and automation operating on this **public** repository. Read [CONSTITUTION.md](CONSTITUTION.md) and [GOVERNANCE.md](GOVERNANCE.md) before changing files. In case of conflict, enforce the stricter public-information restriction.
 
+## 0. Mandatory terminology
+
+**Taria** refers exclusively to the private ecosystem and its private projects. **Tarium** refers to the public ecosystem and its explicitly registered public projects. Do not conflate them, rename a private Taria project as public by implication, or infer Tarium enrollment from shared authorship, history, or subject matter. Public-only extraction and explicit owner authorization are separate requirements.
+
 ## 1. Public information boundary — mandatory
 
 **Never transfer private language or private context into public artifacts.** This includes private conversations and excerpts, personal venting, emotional or insulting language copied from private exchanges, internal instructions, private notes, nonpublic identifiers, credentials, unpublished research, or details that can reveal a confidential source. The restriction applies to paraphrases and recognizable derived content, not just exact quotes.

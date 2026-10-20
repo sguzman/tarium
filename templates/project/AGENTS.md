@@ -2,6 +2,10 @@
 
 This is a template for agents and contributors working in an **independent public Tarium project repository**. Replace the project title and any placeholders before publishing. Read this project's `CONSTITUTION.md` and the public Tarium constitution. More restrictive publication rules take priority.
 
+## Mandatory naming and membership
+
+**Taria** means the private ecosystem and its private projects. **Tarium** means the public ecosystem and its explicitly registered public projects. These are distinct. Never treat a private Taria project as a public Tarium project, or infer registration from a migration or a related name. Public extraction requires independent review; Tarium membership requires explicit owner authorization.
+
 ## Mandatory public-information boundary
 
 **Never publish private language or context.** Do not copy private conversations, personal venting, emotionally charged private tone, internal instructions, private identifiers, secrets, private notes, unpublished resources, or their paraphrases into any publicly accessible artifact.
