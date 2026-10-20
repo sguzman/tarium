@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "site"
 OUTPUT = ROOT / "_site"
-FILES = ("index.html", "styles.css", "app.js", "favicon.svg")
+FILES = ("index.html", "styles.css", "app.js", "theme.js", "favicon.svg")
 
 
 def build():

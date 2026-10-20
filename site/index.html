@@ -8,8 +8,9 @@
   <meta property="og:title" content="Tarium — Independent works, connected ideas">
   <meta property="og:description" content="A public index of independently maintained projects, ontologies, and galleries.">
   <meta property="og:type" content="website">
-  <meta name="color-scheme" content="dark light">
+  <meta name="color-scheme" content="light dark">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <script src="./theme.js"></script>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
   <link rel="stylesheet" href="./styles.css">
   <script src="./app.js" defer></script>
@@ -28,6 +29,14 @@
           <a href="#projects">Projects</a>
           <a href="#principles">Principles</a>
           <a class="nav-source" href="https://github.com/sguzman/tarium" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">↗</span></a>
+          <div class="theme-control">
+            <label for="theme-mode">Theme</label>
+            <select id="theme-mode" name="theme-mode" aria-label="Color theme">
+              <option value="system">System</option>
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </select>
+          </div>
         </nav>
       </header>
       <main>

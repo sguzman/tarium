@@ -29,13 +29,18 @@ class SiteTests(unittest.TestCase):
     def test_static_assets_and_relative_paths(self):
         output = ROOT / "_site"
         html = (output / "index.html").read_text()
-        for path in ("./app.js", "./styles.css", "./favicon.svg", "./data/projects.json"):
+        for path in ("./app.js", "./theme.js", "./styles.css", "./favicon.svg", "./data/projects.json"):
             if path != "./data/projects.json":
                 self.assertIn(path, html)
             self.assertTrue((output / path).is_file())
         self.assertIn('id="project-list"', html)
         self.assertIn('id="project-count"', html)
         self.assertIn('id="orbit-projects"', html)
+        self.assertIn('id="theme-mode"', html)
+        self.assertIn('<option value="system">System</option>', html)
+        self.assertIn('<option value="light">Light</option>', html)
+        self.assertIn('<option value="dark">Dark</option>', html)
+        self.assertLess(html.index('./theme.js'), html.index('./styles.css'))
         self.assertIn('aria-label="Orbiting links to Tarium projects"', html)
 
     def test_catalog_is_not_hardcoded_in_site(self):

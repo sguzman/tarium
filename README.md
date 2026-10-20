@@ -21,6 +21,9 @@ The canonical machine-readable registry is the source of truth. Each project has
 
 ## Public website
 
+The site offers System, Light, and Dark appearance modes. System follows the browser's `prefers-color-scheme` setting (including changes while the page is open). An explicit choice is saved in the visitor's browser; the System setting is the default. Desktop theme schedulers work when their color-scheme changes reach the browser through the operating system or desktop portal.
+
+
 **[Browse Tarium projects](https://sguzman.github.io/tarium/)**. The lightweight GitHub Pages site is built from `site/` and the authorized public `registry/projects.json`. A dedicated workflow validates and publishes only these public files. A new approved entry appears automatically after a successful deployment; member implementations stay in their own repositories.
 
 Locally, run `python3 scripts/build_site.py` to build `_site/`. There are no frontend dependencies or external network requirements.

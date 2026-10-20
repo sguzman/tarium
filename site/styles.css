@@ -1,5 +1,5 @@
 :root {
-  color-scheme: dark light;
+  color-scheme: dark;
   --ink: #101a1d; --ink-soft: #182429; --cream: #f5f0e8; --paper: #f0eee7;
   --paper-white: #fbfaf7; --text-dark: #1c292a; --dim: #9eadac;
   --hair: rgba(232,236,227,.14); --accent: #c2a787;
@@ -242,4 +242,125 @@ h2 em {color:#9b8269}
   *,*::before,*::after{transition:none!important}
   .orbit-project-track{animation:none;transform:rotate(var(--orbit-start-angle))}
   .orbit-project-face{animation:none;transform:rotate(calc(-1 * var(--orbit-start-angle)))}
+}
+
+
+/* Site-wide appearance. Native palette remains dark; light mode covers every
+   region. The early head script applies data-theme before the first paint. */
+html[data-theme="dark"] {
+  color-scheme:dark;
+  --paper:#172327;
+  --paper-white:#233136;
+  --text-dark:#e7eae3;
+}
+html[data-theme="light"] {
+  color-scheme:light;
+  --ink:#f3f1eb;
+  --cream:#253534;
+  --paper:#e9ece6;
+  --paper-white:#fffefa;
+  --text-dark:#223332;
+  --hair:rgba(30,57,53,.19);
+  --accent:#96734e;
+}
+.theme-control {display:flex;align-items:center;gap:9px}
+.theme-control label {font-size:10px;font-weight:700;letter-spacing:.12em}
+.theme-control select {
+  color:inherit;background:transparent;border:1px solid var(--hair);border-radius:0;
+  padding:10px 7px;font:inherit;font-size:11px;letter-spacing:.045em;text-transform:none;
+  cursor:pointer;max-width:100px;
+}
+.theme-control select:focus-visible {outline:3px solid #d9aa69;outline-offset:3px}
+.theme-control option {color:CanvasText;background:Canvas}
+
+/* Dark mode: keep the established charcoal identity, but turn the formerly
+   light collection and cards into a true dark canvas. */
+html[data-theme="dark"] .collection-section {background:var(--paper);color:var(--text-dark)}
+html[data-theme="dark"] .eyebrow-light {color:#bbccbd}
+html[data-theme="dark"] h2 em {color:#d3b48f}
+html[data-theme="dark"] .collection-aside {border-color:#4b605a}
+html[data-theme="dark"] .collection-aside span {color:#b0bbb2}
+html[data-theme="dark"] .collection-lead {color:#aebdb5}
+html[data-theme="dark"] .project-card {border-color:#3b4b4b;box-shadow:0 18px 45px rgba(0,0,0,.14)}
+html[data-theme="dark"] .project-card:hover {border-color:#889a90}
+html[data-theme="dark"] .project-index {color:#b1c1b8}
+html[data-theme="dark"] .project-status {color:#bdc9bc}
+html[data-theme="dark"] .card-art {
+  background:color-mix(in srgb,var(--project-accent) 10%,#19292c);
+  border-color:color-mix(in srgb,var(--project-accent) 25%,#394a49)
+}
+html[data-theme="dark"] .card-art .card-monogram {filter:none}
+html[data-theme="dark"] .art-corner {color:#aebdb2}
+html[data-theme="dark"] .card-eyebrow {color:#d3b38f}
+html[data-theme="dark"] .card-body h3 {color:#f3eee4}
+html[data-theme="dark"] .card-summary {color:#b6c5bd}
+html[data-theme="dark"] .card-tag {background:#2b393b;border-color:#435351;color:#d3dacf}
+html[data-theme="dark"] .card-links,html[data-theme="dark"] .card-links a + a {border-color:#415251}
+html[data-theme="dark"] .card-links a:hover {color:#f3d6a8;background:#344044}
+html[data-theme="dark"] .catalog-loading,
+html[data-theme="dark"] .catalog-error,html[data-theme="dark"] .catalog-empty {
+  background:#233136;border-color:#56665c;color:#d0d9d1
+}
+html[data-theme="dark"] .registry-meta {border-color:#455654;color:#b9c7ba}
+html[data-theme="dark"] .registry-meta a {color:#e0d8c6}
+html[data-theme="dark"] .principles-section {background:#111d20}
+
+/* Light mode: restrained parchment and pale sage throughout, including
+   hero, orbit, principles, and footer rather than a dark/light split. */
+html[data-theme="light"] body {background:#f3f1eb;color:var(--cream)}
+html[data-theme="light"] .dark-region {
+  background:radial-gradient(ellipse at 72% 51%,#e0e8df 0%,#f1f1e8 44%,#f7f3ed 100%)
+}
+html[data-theme="light"] .dark-region::before {
+  opacity:.075;background-image:linear-gradient(90deg,transparent 99.6%,#52675c 100%)
+}
+html[data-theme="light"] .brand-mark,html[data-theme="light"] .brand-mark::before {border-color:#7b9286}
+html[data-theme="light"] .brand-mark span {background:#98734e}
+html[data-theme="light"] .top-nav {color:#3a5350}
+html[data-theme="light"] .top-nav a:hover {color:#98673e}
+html[data-theme="light"] .eyebrow {color:#60766b}
+html[data-theme="light"] h1 em {color:#886b4d}
+html[data-theme="light"] .hero-copy {color:#526b63}
+html[data-theme="light"] .hero-cta {background:#273b3b;color:#f7f4ed}
+html[data-theme="light"] .hero-cta:hover {background:#44615e}
+html[data-theme="light"] .orbit {border-color:rgba(68,102,86,.28)}
+html[data-theme="light"] .orbit-mid {border-color:rgba(68,102,86,.18)}
+html[data-theme="light"] .orbit-inner {border-color:rgba(130,108,74,.35)}
+html[data-theme="light"] .orbit-arc {border-top-color:#927450}
+html[data-theme="light"] .orbit-arc-bottom {border-top-color:#7b9a8d}
+html[data-theme="light"] .diagram-axis {background:rgba(74,108,95,.16)}
+html[data-theme="light"] .diagram-center {background:#f4f2e9;box-shadow:0 0 55px 20px rgba(242,245,235,.8);border-color:#7d998a}
+html[data-theme="light"] .diagram-glyph {color:#2f4943}
+html[data-theme="light"] .diagram-center-text {color:#697c73}
+html[data-theme="light"] .diagram-note {color:#647c70}
+html[data-theme="light"] .orbit-project-link {color:#223531}
+html[data-theme="light"] .orbit-project-face {background:rgba(248,247,238,.96);box-shadow:0 5px 18px rgba(40,60,51,.13)}
+html[data-theme="light"] .orbit-project-link:is(:hover,:focus-visible) .orbit-project-face {
+  background:#fffdf6;box-shadow:0 0 0 2px color-mix(in srgb,var(--planet-accent) 22%,transparent),0 8px 20px rgba(40,60,51,.2)
+}
+html[data-theme="light"] .orbit-project-name {background:#fcfaf3;color:#253a37;box-shadow:0 6px 19px rgba(40,60,51,.18)}
+html[data-theme="light"] .hero-bottom {color:#758b7b}
+html[data-theme="light"] .collection-section {background:var(--paper)}
+html[data-theme="light"] .principles-section {background:#dfe6de;color:#243a37}
+html[data-theme="light"] .principles-heading p {color:#5a7168}
+html[data-theme="light"] .principles-grid,
+html[data-theme="light"] .principle + .principle {border-color:rgba(52,88,73,.21)}
+html[data-theme="light"] .principle-no {color:#6b8578}
+html[data-theme="light"] .principle p {color:#566e64}
+html[data-theme="light"] .icon-ontology i {background:#dfe6de}
+html[data-theme="light"] .principles-links a {border-color:rgba(52,88,73,.35)}
+html[data-theme="light"] .principles-links a:hover {color:#996c44}
+html[data-theme="light"] .site-footer {background:#f0f1e9;color:#263a36;border-color:rgba(52,88,73,.21)}
+html[data-theme="light"] .footer-main p {color:#5a7166}
+html[data-theme="light"] .footer-links {color:#435e54}
+html[data-theme="light"] .footer-links a:hover {color:#996c44}
+html[data-theme="light"] .footer-bottom {color:#617a6c;border-color:rgba(52,88,73,.21)}
+
+@media (max-width:760px) {
+  .theme-control label {display:none}
+  .theme-control select {padding:9px 5px}
+}
+@media (max-width:460px) {
+  .top-nav > a:first-child {display:none}
+  .theme-control select {max-width:84px;font-size:10px}
 }
