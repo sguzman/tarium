@@ -2,6 +2,7 @@
 (function () {
   const list = document.getElementById("project-list");
   const count = document.getElementById("project-count");
+  const orbitHost = document.getElementById("orbit-projects");
   const allowRepo = /^https:\/\/github\.com\/[A-Za-z0-9-]+\/[A-Za-z0-9_.-]+$/;
   const allowPath = /^[A-Za-z0-9_.-]+(?:\/[A-Za-z0-9_.-]+)*$/;
   const allowAccent = /^#[A-Fa-f0-9]{6}$/;
@@ -27,6 +28,38 @@
   };
   const formatCount = number => String(number).padStart(2, "0");
 
+  // Both the gallery card and the orbital link use the same verified destination.
+  const projectDestination = project => {
+    const gallery = safeResource(project.repository, project.gallery_path);
+    return typeof project.website_url === "string" && allowWebsite.test(project.website_url)
+      ? project.website_url : (gallery || project.repository);
+  };
+
+  function makeOrbit(project, index) {
+    const lane = index % 3;
+    const period = [38, 47, 57][lane] + Math.floor(index / 3) * 8;
+    const progress = (0.14 + index * 0.61803398875) % 1;
+    const track = create("div", "orbit-project-track orbit-lane-" + lane);
+    track.style.setProperty("--orbit-period", period + "s");
+    track.style.setProperty("--orbit-offset", (-period * progress).toFixed(3) + "s");
+    track.style.setProperty("--orbit-start-angle", (360 * progress).toFixed(3) + "deg");
+
+    const anchor = create("a", "orbit-project-link");
+    anchor.href = projectDestination(project);
+    anchor.target = "_blank";
+    anchor.rel = "noopener noreferrer";
+    anchor.title = "Visit " + project.name;
+    anchor.setAttribute("aria-label", "Visit " + project.name + " website");
+    anchor.style.setProperty("--planet-accent", project.accent_color);
+
+    const face = create("span", "orbit-project-face");
+    face.append(create("span", "orbit-project-planet"),
+                create("span", "orbit-project-name", project.name));
+    anchor.append(face);
+    track.append(anchor);
+    return track;
+  }
+
   function makeCard(project, index) {
     if (!project || typeof project !== "object" ||
         !allowRepo.test(project.repository) ||
@@ -41,8 +74,7 @@
     const ontology = safeResource(project.repository, project.ontology_path);
     const gallery = safeResource(project.repository, project.gallery_path);
     if (!ontology || !gallery) throw new Error("A catalog resource path is invalid.");
-    const website = typeof project.website_url === "string" && allowWebsite.test(project.website_url)
-      ? project.website_url : gallery;
+    const website = projectDestination(project);
     const card = create("article", "project-card");
     card.style.setProperty("--project-accent", project.accent_color);
 
@@ -85,10 +117,12 @@
       const fragment = document.createDocumentFragment();
       sorted.forEach((project, index) => fragment.append(makeCard(project, index)));
       list.replaceChildren();
+      orbitHost.replaceChildren(...sorted.map((project, index) => makeOrbit(project, index)));
       if (sorted.length) list.append(fragment);
       else list.append(create("p", "catalog-empty", "No projects are currently registered."));
       count.textContent = formatCount(sorted.length);
     } catch (error) {
+      orbitHost.replaceChildren();
       list.replaceChildren();
       const panel = create("div", "catalog-error");
       panel.append(create("strong", null, "The project registry is temporarily unavailable."),

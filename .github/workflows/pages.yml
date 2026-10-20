@@ -31,6 +31,7 @@ jobs:
         run: |
           python3 -m unittest discover -s scripts -p 'test_site*.py'
           node --check site/app.js
+          node --test scripts/test_orbit.mjs
       - name: Configure Pages
         if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v5

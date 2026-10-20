@@ -55,6 +55,67 @@ h1 em {color:#c5b29a}
 .point-a {top:2%;left:47%}.point-b {top:83%;left:23%}.point-c {top:45%;right:9%}
 .diagram-note {font-size:9px;letter-spacing:.13em;color:#98ada3}
 .note-top{top:30px;right:0}.note-bottom{bottom:20px;left:8%}
+
+/* Orbital links are driven by the same public catalog as the project cards.
+   Each track rotates, while its project label counter-rotates to stay upright. */
+.hero-visual {z-index:3;isolation:isolate}
+.orbit-decoration {position:absolute;inset:0;pointer-events:none;z-index:0}
+.orbit-projects {position:absolute;inset:0;z-index:2;pointer-events:none}
+.orbit-project-track {
+  position:absolute;
+  left:50%;top:48%;
+  width:calc(var(--orbit-radius) * 2);
+  height:calc(var(--orbit-radius) * 2);
+  margin-left:calc(var(--orbit-radius) * -1);
+  margin-top:calc(var(--orbit-radius) * -1);
+  border-radius:50%;
+  pointer-events:none;
+  animation:orbit-turn var(--orbit-period) linear infinite;
+  animation-delay:var(--orbit-offset);
+}
+.orbit-lane-0 {--orbit-radius:min(15vw,184px)}
+.orbit-lane-1 {--orbit-radius:min(18vw,216px)}
+.orbit-lane-2 {--orbit-radius:min(11vw,108px)}
+.orbit-project-link {
+  position:absolute;left:50%;top:0;
+  transform:translate(-50%,-50%);
+  pointer-events:auto;
+  display:block;
+  border-radius:99px;
+  color:#f9f6ee;
+  text-decoration:none;
+  cursor:pointer;
+}
+.orbit-project-face {
+  display:inline-flex;align-items:center;gap:9px;
+  min-height:38px;max-width:210px;padding:6px 13px 6px 9px;
+  border:1px solid color-mix(in srgb,var(--planet-accent) 55%,#9caa9f);
+  border-radius:99px;
+  background:rgba(16,26,29,.94);
+  box-shadow:0 5px 18px rgba(0,0,0,.25);
+  white-space:nowrap;
+  animation:orbit-counterturn var(--orbit-period) linear infinite;
+  animation-delay:var(--orbit-offset);
+}
+.orbit-project-planet {
+  display:block;flex:none;width:16px;height:16px;border-radius:50%;
+  background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.65),transparent 35%),var(--planet-accent);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--planet-accent) 16%,transparent),0 0 19px color-mix(in srgb,var(--planet-accent) 45%,transparent);
+}
+.orbit-project-name {font-size:10px;font-weight:750;letter-spacing:.085em;text-transform:uppercase;max-width:154px;overflow:hidden;text-overflow:ellipsis}
+.orbit-project-track:hover,
+.orbit-project-track:focus-within,
+.orbit-project-track:hover .orbit-project-face,
+.orbit-project-track:focus-within .orbit-project-face {animation-play-state:paused}
+.orbit-project-link:hover .orbit-project-face,
+.orbit-project-link:focus-visible .orbit-project-face {
+  border-color:var(--planet-accent);background:#2a3535;
+  box-shadow:0 0 0 2px color-mix(in srgb,var(--planet-accent) 20%,transparent),0 8px 20px rgba(0,0,0,.3)
+}
+.orbit-project-link:focus-visible {outline:3px solid #f0cc93;outline-offset:4px}
+@keyframes orbit-turn {from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes orbit-counterturn {from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
+
 .hero-bottom {grid-column:1/-1; display:flex;justify-content:space-between;border-top:1px solid var(--hair);padding-top:22px;font-size:10px;letter-spacing:.19em;color:#93a49b}
 .hero-bottom span span{font-size:15px;margin-left:12px}
 .collection-section {background:var(--paper);color:var(--text-dark);padding:116px 0 110px}
@@ -137,6 +198,12 @@ h2 em {color:#9b8269}
   .hero-main{padding-bottom:42px}h1 {white-space:normal;font-size:clamp(53px,9vw,73px)}
   .hero-visual {height:255px;width:100%;max-width:380px;justify-self:center;margin-bottom:30px}
   .orbit-outer,.orbit-arc{width:250px;height:250px}.orbit-mid{width:191px;height:191px}.orbit-inner{width:123px;height:123px}.diagram-center{width:95px;height:95px}.diagram-glyph{font-size:45px}
+  .orbit-lane-0 {--orbit-radius:94px}
+  .orbit-lane-1 {--orbit-radius:94px}
+  .orbit-lane-2 {--orbit-radius:63px}
+  .orbit-project-face {min-height:34px;max-width:140px;padding:5px 9px 5px 7px;gap:6px}
+  .orbit-project-planet {width:12px;height:12px}
+  .orbit-project-name {font-size:9px;letter-spacing:.025em;max-width:99px}
   .hero-bottom {grid-column:1;gap:18px;font-size:9px}
   .collection-section,.principles-section{padding-block:80px}
   .section-heading {align-items:end}.collection-aside strong {font-size:49px}.collection-aside{padding-left:15px;gap:9px}.collection-aside span{font-size:8px}
@@ -153,4 +220,9 @@ h2 em {color:#9b8269}
   .card-top{padding:25px 23px 9px}.card-art{margin:4px 23px 18px}.card-body{padding:0 23px 23px}
   .card-links a {min-width:130px;padding:16px 20px;font-size:10px}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important}
+  .orbit-project-track{animation:none;transform:rotate(var(--orbit-start-angle))}
+  .orbit-project-face{animation:none;transform:rotate(calc(-1 * var(--orbit-start-angle)))}
+}

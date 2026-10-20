@@ -33,6 +33,8 @@ class SiteTests(unittest.TestCase):
             self.assertTrue((output / path).is_file())
         self.assertIn('id="project-list"', html)
         self.assertIn('id="project-count"', html)
+        self.assertIn('id="orbit-projects"', html)
+        self.assertIn('aria-label="Orbiting links to Tarium projects"', html)
 
     def test_catalog_is_not_hardcoded_in_site(self):
         for name in ("index.html", "styles.css", "app.js"):
@@ -42,6 +44,9 @@ class SiteTests(unittest.TestCase):
         self.assertIn('fetch("./data/projects.json"', app)
         self.assertIn("textContent", app)
         self.assertNotIn("innerHTML", app)
+        self.assertIn("makeOrbit(project, index)", app)
+        self.assertIn("projectDestination(project)", app)
+        self.assertIn('orbitHost.replaceChildren(', app)
 
     def test_registry_links_and_colors(self):
         entries = json.loads((ROOT / "_site/data/projects.json").read_text())["projects"]
