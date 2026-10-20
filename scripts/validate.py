@@ -47,6 +47,8 @@ def main():
     registry = read_json(REGISTRY)
     schema = read_json(ROOT / "registry/schema.json")
     require(schema.get("properties", {}).get("schema_version", {}).get("const") == 1, "registry schema version mismatch")
+    repo_pattern = schema["properties"]["projects"]["items"]["properties"]["repository"]["pattern"]
+    require(re.fullmatch(repo_pattern, "https://github.com/sguzman/valid-repo") is not None, "registry schema rejects a valid repository URL")
     require(isinstance(registry, dict) and set(registry) == {"schema_version", "projects"}, "invalid registry root")
     require(type(registry["schema_version"]) is int and registry["schema_version"] == 1, "unsupported registry version")
     projects = registry["projects"]
