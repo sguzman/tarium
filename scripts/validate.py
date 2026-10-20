@@ -85,16 +85,10 @@ def main():
         require(segments[1].lower() != "taria", f"{slug}: private parent project is forbidden")
         require(url.lower() not in seen_repos, f"{slug}: duplicate repository")
         seen_repos.add(url.lower())
-        path_patterns = {
-            "ontology_path": r"^ontology/[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*\\.json$",
-            "gallery_path": r"^[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*\\.(?:md|html)$",
-            "gallery_index_path": r"^[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*\\.json$",
-        }
-        for key, pattern in path_patterns.items():
+        for key in ("ontology_path", "gallery_path", "gallery_index_path"):
             safe_relative(item[key], f"{slug}: {key}")
-            require(re.fullmatch(pattern, item[key]) is not None, f"{slug}: invalid {key}")
-            require(re.fullmatch(schema["properties"]["projects"]["items"]["properties"][key]["pattern"], item[key]) is not None,
-                    f"{slug}: {key} violates registry schema")
+            pattern = schema["properties"]["projects"]["items"]["properties"][key]["pattern"]
+            require(re.fullmatch(pattern, item[key]) is not None, f"{slug}: {key} violates registry schema")
         accent = item["accent_color"]
         require(isinstance(accent, str) and re.fullmatch(r"#[0-9A-Fa-f]{6}", accent), f"{slug}: invalid accent_color")
     require([x["slug"] for x in projects] == sorted(seen_slugs), "registry must be sorted by slug")
