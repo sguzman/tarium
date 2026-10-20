@@ -67,6 +67,8 @@ try {
   await select.selectOption("system");
   assert.equal(await page.locator("html").getAttribute("data-theme"),"light");
   await page.emulateMedia({colorScheme:"dark"});
+  await page.waitForFunction(() => document.documentElement.getAttribute("data-theme") === "dark",
+    null,{timeout:5000});
   assert.equal(await page.locator("html").getAttribute("data-theme"),"dark",
     "System preference must react without a page reload");
 
