@@ -2,6 +2,8 @@
 
 This repository accepts changes to public governance, standards, templates, validation tools, and owner-approved registry entries. It does **not** accept member-project source code, data, gallery collections, private work products, or unapproved entries.
 
+Follow [AGENTS.md](AGENTS.md) for mandatory operational and public-language safeguards.
+
 Before committing, review every changed path and its content, plus the commit message. Use concise, neutral technical language. Do not paste private chats, copied prompts, personal venting, sensitive source documents, identifying information, or internal context into code, comments, test examples, issues, or commit metadata.
 
 Run:

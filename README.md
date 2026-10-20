@@ -23,10 +23,13 @@ When the owner approves a project, its entry will provide a short overview and a
 5. **Public dependencies only.** Member projects may refer to other approved, publicly accessible Tarium projects, never to private workspaces, unpublished repositories, or private project resources.
 6. **Clean externalization.** Candidate material must be inventoried and individually approved, redacted or rewritten for publication, then reviewed for provenance and leaks before release. Never transplant private Git histories.
 
+For day-to-day agent and contributor behavior, see [AGENTS.md](AGENTS.md). These operating rules explicitly prohibit copying private language or tone into any public artifact.
+
 These are binding rules, not a claim that automated scanners can detect every contextual disclosure. See the [constitution](CONSTITUTION.md), [externalization procedure](EXTERNALIZATION.md), and [contribution rules](CONTRIBUTING.md).
 
 ## Templates
 
+- [Project agent instructions](templates/project/AGENTS.md)
 - [Project constitution](templates/project/CONSTITUTION.md)
 - [Project README](templates/project/README.md)
 - [Project membership manifest](templates/project/tarium.json)

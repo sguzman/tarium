@@ -11,6 +11,8 @@ ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "registry/projects.json"
 REQUIRED = (
     "CONSTITUTION.md",
+    "AGENTS.md",
+    "templates/project/AGENTS.md",
     "GOVERNANCE.md",
     "EXTERNALIZATION.md",
     "registry/schema.json",
@@ -44,6 +46,11 @@ def safe_relative(value, label):
 def main():
     for path in REQUIRED:
         require((ROOT / path).is_file(), f"missing required file: {path}")
+    # The privacy boundary is an essential part of both agent instruction files.
+    for instructions in ("AGENTS.md", "templates/project/AGENTS.md"):
+        text = (ROOT / instructions).read_text(encoding="utf-8").lower()
+        require("never" in text and "private language" in text and "commit" in text,
+                f"{instructions}: mandatory publication instructions are missing")
     registry = read_json(REGISTRY)
     schema = read_json(ROOT / "registry/schema.json")
     require(schema.get("properties", {}).get("schema_version", {}).get("const") == 1, "registry schema version mismatch")

@@ -20,7 +20,7 @@ The project owns a public [gallery](gallery/README.md) backed by [gallery/index.
 
 ## Public governance
 
-Adopt and customize [CONSTITUTION.md](CONSTITUTION.md) without weakening the public-content boundary.
+Adopt and customize [CONSTITUTION.md](CONSTITUTION.md) and [AGENTS.md](AGENTS.md) without weakening the public-content boundary.
 
 ## Tarium relationship
 
