@@ -94,9 +94,9 @@ test("hover and focus pause both rotating track and counter-rotating label", () 
   assert.match(css, /\.orbit-project-track:focus-within[^}]*animation-play-state:paused/s);
   assert.match(css, /@keyframes orbit-counterturn/);
   assert.match(css, /prefers-reduced-motion:reduce/);
-  assert.match(css, /\\.orbit-project-name\\s*\\{[^}]*visibility:hidden;opacity:0/s);
-  assert.match(css, /\\.orbit-project-link:hover \\.orbit-project-name,[\\s\\S]*?visibility:visible;opacity:1/);
-  assert.match(css, /\\.orbit-project-link:focus-visible \\.orbit-project-name/);
-  assert.match(css, /\\.orbit-project-face\\s*\\{[^}]*width:36px;height:36px/s);
-  assert.doesNotMatch(css, /\\.orbit-project-face\\s*\\{[^}]*max-width:210px/s);
+  assert.match(css, /\.orbit-project-name\s*\{[^}]*visibility:hidden;opacity:0/s);
+  assert.match(css, /\.orbit-project-link:hover \.orbit-project-name,[\s\S]*?visibility:visible;opacity:1/);
+  assert.match(css, /\.orbit-project-link:focus-visible \.orbit-project-name/);
+  assert.match(css, /\.orbit-project-face\s*\{[^}]*width:36px;height:36px/s);
+  assert.doesNotMatch(css, /\.orbit-project-face\s*\{[^}]*max-width:210px/s);
 });
