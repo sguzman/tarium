@@ -17,6 +17,23 @@
       "gallery_index_path": "specimens/queue.json",
       "accent_color": "#B9905D",
       "website_url": "https://sguzman.github.io/architectarium/"
+    },
+    {
+      "slug": "stratlas",
+      "name": "Stratlas",
+      "summary": "Public metropolitan and city geographic research atlas. Metropolitan regions are research specimens; interactive maps organize source-backed geography, infrastructure, land use, demographics, parcel assessments and other available regional data.",
+      "repository": "https://github.com/sguzman/stratlas",
+      "domains": [
+        "metropolitan geography",
+        "urban data",
+        "cartography",
+        "geospatial research"
+      ],
+      "ontology_path": "docs/ontology/model.json",
+      "gallery_path": "web/index.html",
+      "gallery_index_path": "gallery/index.json",
+      "accent_color": "#6B9DC4",
+      "website_url": "https://sguzman.github.io/stratlas/"
     }
   ]
 }

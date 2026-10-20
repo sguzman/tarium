@@ -10,11 +10,12 @@ Tarium describes a collection of public, self-contained projects. Each project l
 
 ## Project registry
 
-**One project is enrolled:** [Architectarium](https://github.com/sguzman/architectarium), explicitly authorized as Tarium's first public member. Registration is by the repository owner's explicit authorization only; related names or maintainers do not imply membership.
+**Two projects are enrolled:** [Architectarium](https://github.com/sguzman/architectarium) and [Stratlas](https://github.com/sguzman/stratlas). Registration is by the repository owner's explicit authorization only; related names or maintainers do not imply membership.
 
 | Project | Overview | Public resources | Identity color |
 | --- | --- | --- | --- |
 | [Architectarium](https://github.com/sguzman/architectarium) | Architectural ontology, building dossiers, and schematic interactive 3D study | [Ontology](https://github.com/sguzman/architectarium/blob/main/ontology/components.json) · [Gallery](https://github.com/sguzman/architectarium/blob/main/site/index.html) · [Catalog](https://github.com/sguzman/architectarium/blob/main/specimens/queue.json) | Sandstone `#B9905D` |
+| [Stratlas](https://github.com/sguzman/stratlas) | Metropolitan-area specimens, maps, and source-backed urban/geographic data | [Ontology](https://github.com/sguzman/stratlas/blob/main/docs/ontology/model.json) · [Interactive map](https://sguzman.github.io/stratlas/) · [Gallery index](https://github.com/sguzman/stratlas/blob/main/gallery/index.json) | Cartographic blue `#6B9DC4` |
 
 The canonical machine-readable registry is the source of truth. Each project has its own identity color, and the [public project landing page](https://sguzman.github.io/tarium/) renders directly from registry data with no duplicated project catalog in the site code.
 
