@@ -55,7 +55,9 @@ class SiteTests(unittest.TestCase):
         for entry in entries:
             self.assertRegex(entry["repository"], r"^https://github\.com/[\w-]+/[\w.-]+$")
             self.assertRegex(entry["accent_color"], r"^#[0-9A-Fa-f]{6}$")
-            self.assertTrue(entry["ontology_path"].startswith("ontology/"))
+            schema = json.loads((ROOT / "registry/schema.json").read_text())
+            ontology_pattern = schema["properties"]["projects"]["items"]["properties"]["ontology_path"]["pattern"]
+            self.assertIsNotNone(re.fullmatch(ontology_pattern, entry["ontology_path"]))
 
 
 if __name__ == "__main__":
