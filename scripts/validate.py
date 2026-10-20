@@ -65,7 +65,7 @@ def main():
     for item in projects:
         require(isinstance(item, dict), "project entry must be an object")
         required = {"slug", "name", "summary", "repository", "domains", "ontology_path", "gallery_path", "gallery_index_path", "accent_color"}
-        require(set(item) == required, "project entry has missing or unexpected fields")
+        require(required <= set(item) <= required | {"website_url"}, "project entry has missing or unexpected fields")
         slug = item["slug"]
         require(isinstance(slug, str) and SLUG.fullmatch(slug), f"invalid slug: {slug!r}")
         require(slug not in seen_slugs, f"duplicate slug: {slug}")
@@ -89,6 +89,11 @@ def main():
             safe_relative(item[key], f"{slug}: {key}")
             pattern = schema["properties"]["projects"]["items"]["properties"][key]["pattern"]
             require(re.fullmatch(pattern, item[key]) is not None, f"{slug}: {key} violates registry schema")
+        if "website_url" in item:
+            site_url = item["website_url"]
+            require(isinstance(site_url, str), f"{slug}: invalid website_url")
+            site_pattern = schema["properties"]["projects"]["items"]["properties"]["website_url"]["pattern"]
+            require(re.fullmatch(site_pattern, site_url) is not None, f"{slug}: website_url must be a GitHub Pages project URL")
         accent = item["accent_color"]
         require(isinstance(accent, str) and re.fullmatch(r"#[0-9A-Fa-f]{6}", accent), f"{slug}: invalid accent_color")
     require([x["slug"] for x in projects] == sorted(seen_slugs), "registry must be sorted by slug")

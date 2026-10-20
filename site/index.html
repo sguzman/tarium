@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#11191c">
+  <meta name="description" content="Tarium is a public constellation of independent research, software, and interactive collections. Explore the authorized project registry.">
+  <meta property="og:title" content="Tarium — Independent works, connected ideas">
+  <meta property="og:description" content="A public index of independently maintained projects, ontologies, and galleries.">
+  <meta property="og:type" content="website">
+  <meta name="color-scheme" content="dark light">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+  <title>Tarium — Independent works, connected ideas</title>
+</head>
+<body>
+  <a class="skip-link" href="#projects">Skip to projects</a>
+  <div class="site-shell">
+    <div class="dark-region">
+      <header class="site-header wrap">
+        <a class="brand" href="./" aria-label="Tarium home">
+          <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span class="brand-name">TARIUM<span class="brand-period">.</span></span>
+        </a>
+        <nav class="top-nav" aria-label="Primary navigation">
+          <a href="#projects">Projects</a>
+          <a href="#principles">Principles</a>
+          <a class="nav-source" href="https://github.com/sguzman/tarium" target="_blank" rel="noopener noreferrer">Source <span aria-hidden="true">↗</span></a>
+        </nav>
+      </header>
+      <main>
+        <section class="hero wrap" aria-labelledby="hero-title">
+          <div class="hero-main">
+            <div class="eyebrow"><span class="eyebrow-line"></span> A PUBLIC INDEX OF INDEPENDENT WORK</div>
+            <h1 id="hero-title">Many disciplines.<br><em>One open horizon.</em></h1>
+            <p class="hero-copy">A curated collection of independent projects connecting research, structured knowledge, and interactive exploration. Every work has its own repository, ontology, and gallery.</p>
+            <a class="hero-cta" href="#projects">Explore the collection <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-visual" aria-hidden="true">
+            <div class="orbit orbit-outer"></div><div class="orbit orbit-mid"></div><div class="orbit orbit-inner"></div>
+            <div class="orbit-arc orbit-arc-top"></div><div class="orbit-arc orbit-arc-bottom"></div>
+            <div class="diagram-axis axis-h"></div><div class="diagram-axis axis-v"></div>
+            <span class="orbit-point point-a"></span><span class="orbit-point point-b"></span><span class="orbit-point point-c"></span>
+            <div class="diagram-center"><span class="diagram-glyph">T</span><span class="diagram-center-text">OPEN INDEX</span></div>
+            <div class="diagram-note note-top">01 / INDEPENDENT</div>
+            <div class="diagram-note note-bottom">02 / CONNECTED</div>
+          </div>
+          <div class="hero-bottom">
+            <span>RESEARCH / SOFTWARE / GALLERIES</span>
+            <span>SCROLL TO DISCOVER <span aria-hidden="true">↓</span></span>
+          </div>
+        </section>
+      </div>
+      <section class="collection-section" id="projects" aria-labelledby="projects-title">
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow eyebrow-light"><span class="eyebrow-line"></span> THE REGISTRY</div>
+              <h2 id="projects-title">An index of<br><em>independent worlds.</em></h2>
+            </div>
+            <div class="collection-aside"><strong id="project-count">—</strong><span>REGISTERED<br>PROJECTS</span></div>
+          </div>
+          <p class="collection-lead">Each project is independently maintained. Explore its code, domain model, and public gallery from one place.</p>
+          <div id="project-list" class="project-grid" aria-live="polite" aria-busy="true">
+            <div class="catalog-loading"><span class="loading-bar"></span>Loading public registry…</div>
+          </div>
+          <div class="registry-meta">
+            <span><span class="meta-dot"></span> Curated membership · Public repositories only</span>
+            <a href="https://github.com/sguzman/tarium/blob/main/registry/projects.json" target="_blank" rel="noopener noreferrer">View machine-readable registry ↗</a>
+          </div>
+        </div>
+      </section>
+      <section class="principles-section" id="principles" aria-labelledby="principles-title">
+        <div class="wrap">
+          <div class="eyebrow"><span class="eyebrow-line"></span> HOW IT WORKS</div>
+          <div class="principles-heading">
+            <h2 id="principles-title">Separate by design.<br><em>Connected by choice.</em></h2>
+            <p>Tarium is an index and shared framework, not a monorepo. Member projects retain their identity, data, and release cycle.</p>
+          </div>
+          <div class="principles-grid">
+            <article class="principle">
+              <span class="principle-no">01</span>
+              <div class="principle-icon icon-independent" aria-hidden="true"><i></i><i></i><i></i></div>
+              <h3>Independent repositories</h3>
+              <p>Every project lives in its own public repository with its own development and documentation.</p>
+            </article>
+            <article class="principle">
+              <span class="principle-no">02</span>
+              <div class="principle-icon icon-ontology" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+              <h3>Knowledge made explicit</h3>
+              <p>Projects maintain their own documented ontologies and navigable galleries.</p>
+            </article>
+            <article class="principle">
+              <span class="principle-no">03</span>
+              <div class="principle-icon icon-public" aria-hidden="true"><i></i></div>
+              <h3>A deliberate public boundary</h3>
+              <p>Membership is explicit, sources are reviewed, and public work is independent of nonpublic resources.</p>
+            </article>
+          </div>
+          <div class="principles-links">
+            <a href="https://github.com/sguzman/tarium/blob/main/CONSTITUTION.md" target="_blank" rel="noopener noreferrer">Read the constitution <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/sguzman/tarium/blob/main/GOVERNANCE.md" target="_blank" rel="noopener noreferrer">Registry governance <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+      </main>
+      <footer class="site-footer">
+        <div class="wrap footer-main">
+          <div><span class="footer-wordmark">TARIUM<span>.</span></span><p>An open index of independent works.</p></div>
+          <div class="footer-links"><a href="#projects">Projects</a><a href="https://github.com/sguzman/tarium" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://github.com/sguzman/tarium/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">MIT License ↗</a></div>
+        </div>
+        <div class="wrap footer-bottom"><span>PUBLIC PROJECT REGISTRY · 2026</span><span>DESIGNED TO GROW, ONE PROJECT AT A TIME</span></div>
+      </footer>
+    </div>
+</body>
+</html>

@@ -15,7 +15,8 @@
       "ontology_path": "ontology/components.json",
       "gallery_path": "site/index.html",
       "gallery_index_path": "specimens/queue.json",
-      "accent_color": "#B9905D"
+      "accent_color": "#B9905D",
+      "website_url": "https://sguzman.github.io/architectarium/"
     }
   ]
 }

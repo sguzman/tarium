@@ -16,7 +16,13 @@ Tarium describes a collection of public, self-contained projects. Each project l
 | --- | --- | --- | --- |
 | [Architectarium](https://github.com/sguzman/architectarium) | Architectural ontology, building dossiers, and schematic interactive 3D study | [Ontology](https://github.com/sguzman/architectarium/blob/main/ontology/components.json) · [Gallery](https://github.com/sguzman/architectarium/blob/main/site/index.html) · [Catalog](https://github.com/sguzman/architectarium/blob/main/specimens/queue.json) | Sandstone `#B9905D` |
 
-The canonical machine-readable registry is the source of truth. Each project may have its own visual identity color; a future public landing page can use this field without hard-coded project definitions.
+The canonical machine-readable registry is the source of truth. Each project has its own identity color, and the [public project landing page](https://sguzman.github.io/tarium/) renders directly from registry data with no duplicated project catalog in the site code.
+
+## Public website
+
+**[Browse Tarium projects](https://sguzman.github.io/tarium/)**. The lightweight GitHub Pages site is built from `site/` and the authorized public `registry/projects.json`. A dedicated workflow validates and publishes only these public files. A new approved entry appears automatically after a successful deployment; member implementations stay in their own repositories.
+
+Locally, run `python3 scripts/build_site.py` to build `_site/`. There are no frontend dependencies or external network requirements.
 
 - [Machine-readable project registry](registry/projects.json)
 - [Registry format](registry/schema.json)
@@ -46,7 +52,7 @@ These are binding rules, not a claim that automated scanners can detect every co
 - [Ontology starter](templates/project/ontology/README.md)
 - [Gallery starter](templates/project/gallery/README.md)
 
-These are scaffolds for **future independent repositories**, not projects hosted here. This hub's registry remains empty until the owner authorizes specific additions.
+These are scaffolds for **future independent repositories**, not projects hosted here. Only the owner may authorize additions to the public registry.
 
 ## Verification
 

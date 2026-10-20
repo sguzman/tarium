@@ -71,6 +71,10 @@
           "accent_color": {
             "type": "string",
             "pattern": "^#[0-9A-Fa-f]{6}$"
+          },
+          "website_url": {
+            "type": "string",
+            "pattern": "^https://[a-zA-Z0-9-]+\\.github\\.io/[a-zA-Z0-9_.-]+/$"
           }
         }
       }
