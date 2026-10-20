@@ -21,8 +21,10 @@ class SiteTests(unittest.TestCase):
         source = json.loads((ROOT / "registry/projects.json").read_text())
         published = json.loads((ROOT / "_site/data/projects.json").read_text())
         self.assertEqual(source, published)
-        self.assertEqual(len(published["projects"]), 1)
-        self.assertEqual(published["projects"][0]["slug"], "architectarium")
+        self.assertEqual(len(published["projects"]), len(source["projects"]))
+        slugs = [item["slug"] for item in published["projects"]]
+        self.assertEqual(slugs, sorted(slugs))
+        self.assertEqual(len(slugs), len(set(slugs)))
 
     def test_static_assets_and_relative_paths(self):
         output = ROOT / "_site"
