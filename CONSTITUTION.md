@@ -16,6 +16,18 @@ Only the owner may explicitly authorize a project's enrollment, removal, or offi
 
 The authoritative membership list is `registry/projects.json`. Changes must correspond to explicit owner authorization and must not be performed speculatively or in bulk.
 
+### Mandatory owner authorization gate
+
+**Tarium membership is default-deny.** No repository may be enrolled, removed, or presented as an official member without a direct, unambiguous instruction from the owner explicitly authorizing that membership operation for the specifically named public repository.
+
+Permission to create, own, develop, migrate, externalize, publish, review, or maintain a project does **not** confer permission to change the Tarium registry. Neither public visibility nor adopting a Tarium-style constitution, ontology, or gallery implies enrollment. A statement that a project is intended for the Tarium ecosystem is not, by itself, an enrollment directive. No agent or automation may interpret its own plan, another agent's commit, or authorization concerning a different repository as approval.
+
+**If authorization is absent or uncertain, the registry must remain unchanged.** A separate owner instruction is required for each named project and each membership operation. No opportunistic, automatic, speculative, or bulk enrollments are permitted unless the owner expressly identifies every repository to be affected. Removal of a member cannot be reversed without renewed owner approval.
+
+This gate applies equally when work originates in an independent project repository: contributing to or publishing a member or candidate project never authorizes cross-repository edits to the Tarium hub. For expressly approved enrollment, maintainers must verify the project's independent public constitution, ontology, gallery, and dependencies, and change only the authorized registry entries.
+
+When an unauthorized enrollment is found, restore the last authorized registry state, preserve legitimate entries, and verify the generated public catalog. Authorization discussions and private conversations must not be copied into public commit messages, documentation, or other artifacts.
+
 ## Article III — The public-information boundary
 
 Private materials must never appear in public project source, documentation, metadata, examples, galleries, issues, discussions, commit messages, change logs, workflows, release artifacts, or Git history.
