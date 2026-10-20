@@ -17,22 +17,6 @@
       "gallery_index_path": "specimens/queue.json",
       "accent_color": "#B9905D",
       "website_url": "https://sguzman.github.io/architectarium/"
-    },
-    {
-      "slug": "machinotheca",
-      "name": "Machinotheca",
-      "summary": "Independent public engineering ontology and interactive specimen collection, with source-aware mechanical and electronic models, linked technical guides, and a gallery being populated from verified exhibits.",
-      "repository": "https://github.com/sguzman/machinotheca",
-      "domains": [
-        "engineering",
-        "mechanisms",
-        "technical ontology",
-        "interactive 3d"
-      ],
-      "ontology_path": "ontology/ontology.json",
-      "gallery_path": "index.html",
-      "gallery_index_path": "gallery/index.json",
-      "accent_color": "#91BBAF"
     }
   ]
 }
