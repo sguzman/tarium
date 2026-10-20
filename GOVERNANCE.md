@@ -14,7 +14,7 @@ Removing a project from the registry does not delete or modify its independent r
 
 ## Registry entries
 
-An entry contains a unique slug, display name, concise public summary, canonical public GitHub repository URL, public subject areas, and relative locations of the member's ontology and gallery. It is descriptive metadata, not an executable dependency catalog.
+An entry contains a unique slug, display name, concise public summary, canonical public GitHub repository URL, public subject areas, relative paths to its independent machine-readable ontology, human-facing gallery and machine-readable specimen/gallery index, and a six-digit hex identity color. Paths refer to resources *inside the registered project's own repository*; they need not use this hub's template filenames. The identity color is presentation metadata for a possible future landing page, not a category or ranking. It is descriptive metadata, not an executable dependency catalog. Verify target URLs and public visibility before enrolling.
 
 Registry order is alphabetical by slug. The initial registry intentionally has no entries.
 

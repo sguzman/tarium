@@ -10,7 +10,13 @@ Tarium describes a collection of public, self-contained projects. Each project l
 
 ## Project registry
 
-**No projects are enrolled yet.** Registration is by explicit authorization from the repository owner only. A public repository does not become a Tarium project just because it has a related name, subject, or maintainer.
+**One project is enrolled:** [Architectarium](https://github.com/sguzman/architectarium), explicitly authorized as Tarium's first public member. Registration is by the repository owner's explicit authorization only; related names or maintainers do not imply membership.
+
+| Project | Overview | Public resources | Identity color |
+| --- | --- | --- | --- |
+| [Architectarium](https://github.com/sguzman/architectarium) | Architectural ontology, building dossiers, and schematic interactive 3D study | [Ontology](https://github.com/sguzman/architectarium/blob/main/ontology/components.json) · [Gallery](https://github.com/sguzman/architectarium/blob/main/site/index.html) · [Catalog](https://github.com/sguzman/architectarium/blob/main/specimens/queue.json) | Sandstone `#B9905D` |
+
+The canonical machine-readable registry is the source of truth. Each project may have its own visual identity color; a future public landing page can use this field without hard-coded project definitions.
 
 - [Machine-readable project registry](registry/projects.json)
 - [Registry format](registry/schema.json)

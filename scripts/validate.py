@@ -53,18 +53,18 @@ def main():
                 f"{instructions}: mandatory publication instructions are missing")
     registry = read_json(REGISTRY)
     schema = read_json(ROOT / "registry/schema.json")
-    require(schema.get("properties", {}).get("schema_version", {}).get("const") == 1, "registry schema version mismatch")
+    require(schema.get("properties", {}).get("schema_version", {}).get("const") == 2, "registry schema version mismatch")
     repo_pattern = schema["properties"]["projects"]["items"]["properties"]["repository"]["pattern"]
     require(re.fullmatch(repo_pattern, "https://github.com/sguzman/valid-repo") is not None, "registry schema rejects a valid repository URL")
     require(isinstance(registry, dict) and set(registry) == {"schema_version", "projects"}, "invalid registry root")
-    require(type(registry["schema_version"]) is int and registry["schema_version"] == 1, "unsupported registry version")
+    require(type(registry["schema_version"]) is int and registry["schema_version"] == 2, "unsupported registry version")
     projects = registry["projects"]
     require(isinstance(projects, list), "registry projects must be a list")
     seen_slugs = set()
     seen_repos = set()
     for item in projects:
         require(isinstance(item, dict), "project entry must be an object")
-        required = {"slug", "name", "summary", "repository", "domains", "ontology_path", "gallery_path"}
+        required = {"slug", "name", "summary", "repository", "domains", "ontology_path", "gallery_path", "gallery_index_path", "accent_color"}
         require(set(item) == required, "project entry has missing or unexpected fields")
         slug = item["slug"]
         require(isinstance(slug, str) and SLUG.fullmatch(slug), f"invalid slug: {slug!r}")
@@ -85,9 +85,18 @@ def main():
         require(segments[1].lower() != "taria", f"{slug}: private parent project is forbidden")
         require(url.lower() not in seen_repos, f"{slug}: duplicate repository")
         seen_repos.add(url.lower())
-        for key, expected in (("ontology_path", "ontology/ontology.json"), ("gallery_path", "gallery/index.json")):
+        path_patterns = {
+            "ontology_path": r"^ontology/[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*\\.json$",
+            "gallery_path": r"^[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*\\.(?:md|html)$",
+            "gallery_index_path": r"^[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*\\.json$",
+        }
+        for key, pattern in path_patterns.items():
             safe_relative(item[key], f"{slug}: {key}")
-            require(item[key] == expected, f"{slug}: {key} must be {expected}")
+            require(re.fullmatch(pattern, item[key]) is not None, f"{slug}: invalid {key}")
+            require(re.fullmatch(schema["properties"]["projects"]["items"]["properties"][key]["pattern"], item[key]) is not None,
+                    f"{slug}: {key} violates registry schema")
+        accent = item["accent_color"]
+        require(isinstance(accent, str) and re.fullmatch(r"#[0-9A-Fa-f]{6}", accent), f"{slug}: invalid accent_color")
     require([x["slug"] for x in projects] == sorted(seen_slugs), "registry must be sorted by slug")
     manifest = read_json(ROOT / "templates/project/tarium.json")
     ontology = read_json(ROOT / "templates/project/ontology/ontology.json")

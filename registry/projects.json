@@ -1,4 +1,21 @@
 {
-  "schema_version": 1,
-  "projects": []
+  "schema_version": 2,
+  "projects": [
+    {
+      "slug": "architectarium",
+      "name": "Architectarium",
+      "summary": "Public architectural research collection with a sourced component ontology, individual building dossiers, and an interactive gallery featuring a schematic Parthenon study.",
+      "repository": "https://github.com/sguzman/architectarium",
+      "domains": [
+        "architecture",
+        "architectural ontology",
+        "built heritage",
+        "interactive 3d"
+      ],
+      "ontology_path": "ontology/components.json",
+      "gallery_path": "site/index.html",
+      "gallery_index_path": "specimens/queue.json",
+      "accent_color": "#B9905D"
+    }
+  ]
 }
