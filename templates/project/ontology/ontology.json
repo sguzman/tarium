@@ -1,0 +1,9 @@
+{
+  "format_version": 1,
+  "namespace": "project-slug",
+  "version": "0.1.0",
+  "description": "Replace with a public description of the project's domain model.",
+  "concepts": [],
+  "relations": [],
+  "sources": []
+}
