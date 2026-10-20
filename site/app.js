@@ -48,7 +48,6 @@
     anchor.href = projectDestination(project);
     anchor.target = "_blank";
     anchor.rel = "noopener noreferrer";
-    anchor.title = "Visit " + project.name;
     anchor.setAttribute("aria-label", "Visit " + project.name + " website");
     anchor.style.setProperty("--planet-accent", project.accent_color);
 

@@ -71,6 +71,7 @@ test("registered projects receive a colored, accessible orbiting link to their w
   assert.match(first.className, /orbit-project-track/);
   assert.equal(anchor.href, "https://example.github.io/atlas-a/");
   assert.equal(anchor.attributes["aria-label"], "Visit Atlas A website");
+  assert.equal(anchor.title, undefined, "Avoid a duplicate native tooltip");
   assert.equal(anchor.styles["--planet-accent"], "#B9905D");
   assert.equal(anchor.children[0].children[1].textContent, "Atlas A");
   assert.ok(first.styles["--orbit-offset"].endsWith("s"));
@@ -93,4 +94,9 @@ test("hover and focus pause both rotating track and counter-rotating label", () 
   assert.match(css, /\.orbit-project-track:focus-within[^}]*animation-play-state:paused/s);
   assert.match(css, /@keyframes orbit-counterturn/);
   assert.match(css, /prefers-reduced-motion:reduce/);
+  assert.match(css, /\\.orbit-project-name\\s*\\{[^}]*visibility:hidden;opacity:0/s);
+  assert.match(css, /\\.orbit-project-link:hover \\.orbit-project-name,[\\s\\S]*?visibility:visible;opacity:1/);
+  assert.match(css, /\\.orbit-project-link:focus-visible \\.orbit-project-name/);
+  assert.match(css, /\\.orbit-project-face\\s*\\{[^}]*width:36px;height:36px/s);
+  assert.doesNotMatch(css, /\\.orbit-project-face\\s*\\{[^}]*max-width:210px/s);
 });
