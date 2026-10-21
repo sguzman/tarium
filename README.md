@@ -10,12 +10,17 @@ Tarium describes a collection of public, self-contained projects. Each project l
 
 ## Project registry
 
-**Two projects are enrolled:** [Architectarium](https://github.com/sguzman/architectarium) and [Stratlas](https://github.com/sguzman/stratlas). Registration is by the repository owner's explicit authorization only; related names or maintainers do not imply membership.
+**Five projects are enrolled:** [Architectarium](https://github.com/sguzman/architectarium), [Chromalect](https://github.com/sguzman/chromalect), [Nomos](https://github.com/sguzman/nomos), [Stratlas](https://github.com/sguzman/stratlas), and [Urbarium](https://github.com/sguzman/urbarium). Registration is by the repository owner's explicit authorization only; related names or maintainers do not imply membership.
 
 | Project | Overview | Public resources | Identity color |
 | --- | --- | --- | --- |
 | [Architectarium](https://github.com/sguzman/architectarium) | Architectural ontology, building dossiers, and schematic interactive 3D study | [Ontology](https://github.com/sguzman/architectarium/blob/main/ontology/components.json) · [Gallery](https://github.com/sguzman/architectarium/blob/main/site/index.html) · [Catalog](https://github.com/sguzman/architectarium/blob/main/specimens/queue.json) | Sandstone `#B9905D` |
+| [Chromalect](https://github.com/sguzman/chromalect) | Reversible visual language encodings and Mandarin prototype atlas | [Ontology](https://github.com/sguzman/chromalect/blob/main/ontology/ontology-v1.json) · [Atlas](https://sguzman.github.io/chromalect/) · [Character index](https://github.com/sguzman/chromalect/blob/main/data/catalog/characters-0001-1000.json) | Orchid `#B97CD3` |
+| [Nomos](https://github.com/sguzman/nomos) | Independent normative rules, virtual groups, and instruction composition | [Rule schema](https://github.com/sguzman/nomos/blob/main/schema/rule.schema.json) · [Rule browser](https://sguzman.github.io/nomos/) · [Catalog](https://github.com/sguzman/nomos/blob/main/docs/catalog.json) | Green `#18B381` |
 | [Stratlas](https://github.com/sguzman/stratlas) | Metropolitan-area specimens, maps, and source-backed urban/geographic data | [Ontology](https://github.com/sguzman/stratlas/blob/main/docs/ontology/model.json) · [Interactive map](https://sguzman.github.io/stratlas/) · [Gallery index](https://github.com/sguzman/stratlas/blob/main/gallery/index.json) | Cartographic blue `#6B9DC4` |
+| [Urbarium](https://github.com/sguzman/urbarium) | Source-derived 3D urban reconstruction, with an incomplete Downtown LA pilot | [Ontology](https://github.com/sguzman/urbarium/blob/main/ontology/ontology.json) · [3D viewer](https://sguzman.github.io/urbarium/) · [Gallery index](https://github.com/sguzman/urbarium/blob/main/gallery/index.json) | Coral `#E07081` |
+
+New project identity colors are generated deterministically from normalized project names using [OKLab/OKLCH and golden-angle candidate selection](scripts/project_colors.py), with sRGB gamut fitting and perceptual hue/distance checks against existing projects. Previously assigned Architectarium and Stratlas colors are preserved. The generator is a human-distinction heuristic, not a guarantee that unlimited names can always receive unique colors. The color tests enforce the published assignments.
 
 The canonical machine-readable registry is the source of truth. Each project has its own identity color, and the [public project landing page](https://sguzman.github.io/tarium/) renders directly from registry data with no duplicated project catalog in the site code.
 

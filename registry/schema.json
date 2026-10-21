@@ -58,7 +58,7 @@
           },
           "ontology_path": {
             "type": "string",
-            "pattern": "^(?:ontology|docs/ontology)/[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*\\.json$"
+            "pattern": "^(?:ontology|docs/ontology|schema)/[A-Za-z0-9_.-]+(?:/[A-Za-z0-9_.-]+)*\\.json$"
           },
           "gallery_path": {
             "type": "string",

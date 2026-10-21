@@ -19,6 +19,40 @@
       "website_url": "https://sguzman.github.io/architectarium/"
     },
     {
+      "slug": "chromalect",
+      "name": "Chromalect",
+      "summary": "Work-in-progress research laboratory for reversible visual encoding of written and spoken language, with an independent multilingual ontology and a source-aligned Mandarin character atlas.",
+      "repository": "https://github.com/sguzman/chromalect",
+      "domains": [
+        "linguistics",
+        "visual encoding",
+        "writing systems",
+        "educational research"
+      ],
+      "ontology_path": "ontology/ontology-v1.json",
+      "gallery_path": "site/index.html",
+      "gallery_index_path": "data/catalog/characters-0001-1000.json",
+      "accent_color": "#B97CD3",
+      "website_url": "https://sguzman.github.io/chromalect/"
+    },
+    {
+      "slug": "nomos",
+      "name": "Nomos",
+      "summary": "Work-in-progress public rule ontology and browser-based instruction composer, with independently addressable rules, virtual groups, structured normative metadata and conflict analysis.",
+      "repository": "https://github.com/sguzman/nomos",
+      "domains": [
+        "normative rules",
+        "rule ontology",
+        "instruction composition",
+        "governance"
+      ],
+      "ontology_path": "schema/rule.schema.json",
+      "gallery_path": "docs/index.html",
+      "gallery_index_path": "docs/catalog.json",
+      "accent_color": "#18B381",
+      "website_url": "https://sguzman.github.io/nomos/"
+    },
+    {
       "slug": "stratlas",
       "name": "Stratlas",
       "summary": "Public metropolitan and city geographic research atlas. Metropolitan regions are research specimens; interactive maps organize source-backed geography, infrastructure, land use, demographics, parcel assessments and other available regional data.",
@@ -34,6 +68,23 @@
       "gallery_index_path": "gallery/index.json",
       "accent_color": "#6B9DC4",
       "website_url": "https://sguzman.github.io/stratlas/"
+    },
+    {
+      "slug": "urbarium",
+      "name": "Urbarium",
+      "summary": "Work-in-progress geographic 3D city reconstruction, using source-derived building footprints, terrain and transport geometry. Its Downtown Los Angeles viewer is an incomplete research pilot.",
+      "repository": "https://github.com/sguzman/urbarium",
+      "domains": [
+        "urban reconstruction",
+        "geographic 3d",
+        "procedural geometry",
+        "geospatial data"
+      ],
+      "ontology_path": "ontology/ontology.json",
+      "gallery_path": "index.html",
+      "gallery_index_path": "gallery/index.json",
+      "accent_color": "#E07081",
+      "website_url": "https://sguzman.github.io/urbarium/"
     }
   ]
 }

@@ -7,6 +7,8 @@ import sys
 from pathlib import Path
 from urllib.parse import urlsplit
 
+from project_colors import assign_colors
+
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "registry/projects.json"
 REQUIRED = (
@@ -97,6 +99,10 @@ def main():
         accent = item["accent_color"]
         require(isinstance(accent, str) and re.fullmatch(r"#[0-9A-Fa-f]{6}", accent), f"{slug}: invalid accent_color")
     require([x["slug"] for x in projects] == sorted(seen_slugs), "registry must be sorted by slug")
+    expected_colors = assign_colors([x["name"] for x in projects])
+    for item in projects:
+        require(item["accent_color"] == expected_colors[item["slug"]],
+                f'{item["slug"]}: project color must match deterministic OKLab human-distinction identity')
     manifest = read_json(ROOT / "templates/project/tarium.json")
     ontology = read_json(ROOT / "templates/project/ontology/ontology.json")
     gallery = read_json(ROOT / "templates/project/gallery/index.json")
