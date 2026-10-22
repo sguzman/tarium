@@ -26,11 +26,15 @@ class ColorsTests(unittest.TestCase):
                 self.assertGreaterEqual(hue_gap(a["accent_color"], b["accent_color"]), MIN_HUE_GAP - .001)
 
     def test_name_order_is_stable_and_legacy_colors_remain_fixed(self):
-        names = ["Chromalect", "Nomos", "Urbarium", "Architectarium", "Stratlas"]
+        names = ["Chromalect", "Nomos", "Urbarium", "Architectarium", "Stratlas", "Viewsource"]
         expected = assign_colors(names)
         self.assertEqual(assign_colors(reversed(names)), expected)
         self.assertEqual(expected["architectarium"], "#B9905D")
         self.assertEqual(expected["stratlas"], "#6B9DC4")
+        self.assertEqual(expected["chromalect"], "#B97CD3")
+        self.assertEqual(expected["nomos"], "#18B381")
+        self.assertEqual(expected["urbarium"], "#E07081")
+        self.assertEqual(expected["viewsource"], "#05D6E6")
         self.assertEqual(len(set(expected.values())), len(names))
 
 

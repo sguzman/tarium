@@ -85,6 +85,23 @@
       "gallery_index_path": "gallery/index.json",
       "accent_color": "#E07081",
       "website_url": "https://sguzman.github.io/urbarium/"
+    },
+    {
+      "slug": "viewsource",
+      "name": "Viewsource",
+      "summary": "Work-in-progress, evidence-based study of websites as versioned specimens: their interfaces, source structure, assets, dependencies, and observable behavior. Its public website is not yet ready.",
+      "repository": "https://github.com/sguzman/viewsource",
+      "domains": [
+        "website architecture",
+        "web technology research",
+        "source inspection",
+        "web interface analysis"
+      ],
+      "ontology_path": "ontology/ontology.json",
+      "gallery_path": "gallery/README.md",
+      "gallery_index_path": "gallery/index.json",
+      "accent_color": "#05D6E6",
+      "website_url": "https://sguzman.github.io/viewsource/"
     }
   ]
 }

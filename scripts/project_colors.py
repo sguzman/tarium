@@ -13,8 +13,15 @@ CHROMA = 0.14
 MIN_DELTA_E = 0.12
 MIN_HUE_GAP = 38.0
 
-# Existing, owner-approved visual identities remain unchanged.
-LEGACY_COLORS = {"architectarium": "#B9905D", "stratlas": "#6B9DC4"}
+# Previously issued colors are reserved so newly enrolled names never recolor
+# older entries. New names receive a deterministic OKLab/OKLCH assignment.
+LEGACY_COLORS = {
+    "architectarium": "#B9905D",
+    "chromalect": "#B97CD3",
+    "nomos": "#18B381",
+    "stratlas": "#6B9DC4",
+    "urbarium": "#E07081",
+}
 
 
 def hash_name(name):
@@ -37,13 +44,13 @@ def rgb_to_oklab(color):
     )
 
 
-def oklch_to_hex(hue):
+def oklch_to_hex(hue, lightness=LIGHTNESS):
     for step in range(19):
         chroma = CHROMA - step * .004
         a, b = chroma * math.cos(math.radians(hue)), chroma * math.sin(math.radians(hue))
-        l = (LIGHTNESS + .3963377774*a + .2158037573*b) ** 3
-        m = (LIGHTNESS - .1055613458*a - .0638541728*b) ** 3
-        s = (LIGHTNESS - .0894841775*a - 1.291485548*b) ** 3
+        l = (lightness + .3963377774*a + .2158037573*b) ** 3
+        m = (lightness - .1055613458*a - .0638541728*b) ** 3
+        s = (lightness - .0894841775*a - 1.291485548*b) ** 3
         linear = (
             4.0767416621*l - 3.3077115913*m + .2309699292*s,
             -1.2684380046*l + 2.6097574011*m - .3413193965*s,
@@ -87,5 +94,25 @@ def assign_colors(names, fixed=None):
                 colors[slug] = color
                 break
         else:
-            raise ValueError(f"No suitably distinct OKLab candidate for {name}")
+            # When a larger registry exhausts the single-lightness hue wheel,
+            # vary perceived lightness while preserving hue/distance thresholds.
+            # This leaves all previously published identity colors untouched.
+            for candidate in range(256):
+                hue = (base + candidate * GOLDEN_ANGLE) % 360
+                for lightness in (.74, .62, .80, .56, .85, .50):
+                    try:
+                        color = oklch_to_hex(hue, lightness=lightness)
+                    except ValueError:
+                        continue
+                    if all(
+                        oklab_distance(color, old) >= MIN_DELTA_E
+                        and hue_gap(color, old) >= MIN_HUE_GAP
+                        for old in colors.values()
+                    ):
+                        colors[slug] = color
+                        break
+                if slug in colors:
+                    break
+            else:
+                raise ValueError(f"No suitably distinct OKLab candidate for {name}")
     return colors
